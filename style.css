@@ -1,0 +1,17 @@
+:root {
+    --bg-color: #DDD;
+    --font-color: blue;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    cursor: pointer;
+}

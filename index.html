@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Dark Mode Lab</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<html>
+
+</html>
+<div>System Preference:</div>
+<div id="system-prefer">Unknown</div>
+
+<div>User overwrite:
+    <input type="radio" id='dark' name='pick_theme' value='dark' onchange="chooseTheme(true)" />
+    <label for='dark'>Dark Mode</label>
+    <input type="radio" id="light" name="pick_theme" value="light" onchange="chooseTheme(false)" />
+    <label for="light">Light Mode</label>
+</div>
+
+<script type="text/javascript">
+    let filesAdded = [];
+    window.onload = () => {
+        let isDarkTheme = false;
+        // 1. Check system mode
+        let systemPreferenceDiv = document.getElementById('system-prefer');
+        if (window.matchMedia) {
+            console.table(window.matchMedia('(prefers-color-scheme: dark)').matches);
+            systemPreferenceDiv.innerText = 'Light Mode';
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // dark mode
+                systemPreferenceDiv.innerText = "Dark Mode";
+                isDarkTheme = true;
+            }
+        }
+
+        // 2. Set dark theme when needed.
+        if (isDarkTheme) {
+            console.log(`Is dark mode: ${isDarkTheme}`);
+            // let darkCssRef = document.getElementById('dark');
+            // darkCssRef.disabled = false;
+            addDarkTheme();
+        }
+
+        // 3. Handle user overwrite
+
+        // 3.1 Setup selected theme by current value
+        let targetRadioId = isDarkTheme ? 'dark' : 'light';
+        let targetRadio = document.getElementById(targetRadioId);
+        targetRadio.checked = true;
+    }
+
+    function chooseTheme(isDarkTheme) {
+        if (isDarkTheme) {
+            addDarkTheme();
+        }
+        else {
+            removeDarkTheme();
+        }
+    }
+
+    function addDarkTheme() {
+        console.log("Add dark theme");
+
+        // Already added.
+        let id = 'dark-theme-css';
+        let darkThemeCssTag = document.getElementById(id);
+        if (!!darkThemeCssTag) {
+            console.log('dark theme css already exists');
+            return;
+        }
+
+        let head = document.getElementsByTagName('head')[0];
+
+        // Creating link element
+        let style = document.createElement('link')
+        style.href = 'style.dark.css';
+        style.type = 'text/css';
+        style.rel = 'stylesheet';
+        style.id = id;
+        head.append(style);
+    };
+
+    function removeDarkTheme() {
+        console.log("Remove dark theme");
+        let id = 'dark-theme-css';
+        let darkThemeCssTag = document.getElementById(id);
+        if (!!darkThemeCssTag) {
+            console.log('dark theme css exists');
+            darkThemeCssTag.remove();
+        }
+    }
+</script>
