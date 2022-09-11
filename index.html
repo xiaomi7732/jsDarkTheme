@@ -2,19 +2,37 @@
 
 <head>
     <title>Dark Mode Lab</title>
+    <meta charset="UTF-8">
+    <meta name="description"
+        content="A bare-bone implementation to study dark theme light theme switch with javascript and css.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, DarkTheme, LightTheme">
+    <meta name="author" content="Saar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css" />
 </head>
 <html>
 
 </html>
-<div>System Preference:</div>
-<div id="system-prefer">Unknown</div>
+<div id="header">
+    <span>
+        🏠 <a href="https://www.codewithsaar.net" target="_blank">www.codewithsaar.net</a>
+    </span>
+    <span>
+        🧑‍💻 <a href="https://github.com/xiaomi7732/jsDarkTheme">Source repository</a>
+    </span>
+</div>
+<div id="content">
 
-<div>User overwrite:
-    <input type="radio" id='dark' name='pick_theme' value='dark' onchange="chooseTheme(true)" />
-    <label for='dark'>Dark Mode</label>
-    <input type="radio" id="light" name="pick_theme" value="light" onchange="chooseTheme(false)" />
-    <label for="light">Light Mode</label>
+    <div>System Preference:</div>
+    <div id="system-prefer">Unknown</div>
+
+    <div>User overwrite:
+        <input type="radio" id='dark' name='pick_theme' value='dark' onchange="chooseTheme(true)" />
+        <label for='dark'>Dark Mode</label>
+        <input type="radio" id="light" name="pick_theme" value="light" onchange="chooseTheme(false)" />
+        <label for="light">Light Mode</label>
+    </div>
 </div>
 
 <script type="text/javascript">
